@@ -1,4 +1,5 @@
 {-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE PartialTypeSignatures, NamedWildCards #-}
 
 module HTidy
     ( filterHtml
@@ -6,11 +7,16 @@ module HTidy
 
 import BasicPrelude
 
-import Text.HTML.TagSoup
-
-import Data.String.Conv
+import Data.Conduit
+import Data.Conduit.Binary
+import System.IO
+import Text.XML.Stream.Parse
+import Text.XML.Stream.Render
 
 filterHtml :: IO ()
-filterHtml = putStr . renderTags . toStrict . parseTags =<< getContents
+filterHtml = runConduit $ sourceHandle stdin $$ parse =$= render =$= sinkHandle stdout
     where
-        toStrict = fmap . fmap $ toS
+        parse = parseBytes def
+        render = renderBytes def{rsPretty = True}
+
+
