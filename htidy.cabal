@@ -16,8 +16,11 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   ghc-options:         -Wall
-  exposed-modules:     Lib
+  exposed-modules:     HTidy
   build-depends:       base >= 4.7 && < 5
+                     , basic-prelude
+                     , tagsoup
+                     , string-conv
   default-language:    Haskell2010
 
 executable htidy-exe
@@ -33,7 +36,9 @@ test-suite htidy-test
   hs-source-dirs:      test
   main-is:             Spec.hs
   build-depends:       base
+                     , hspec
                      , htidy
+                     , QuickCheck
   ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
   default-language:    Haskell2010
 

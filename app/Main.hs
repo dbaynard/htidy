@@ -1,6 +1,6 @@
 module Main where
 
-import Lib
+import HTidy
 
 main :: IO ()
-main = someFunc
+main = filterHtml
