@@ -1,9 +1,9 @@
 name:                htidy
 version:             0.1.0.0
-synopsis:            Initial project template from stack
+synopsis:            Stream filter to reformat html
 description:         Please see README.md
 homepage:            https://github.com/dbaynard/htidy#readme
-license:             BSD3
+license:             Apache
 license-file:        LICENSE
 author:              David Baynard
 maintainer:          davidbaynard@gmail.com
