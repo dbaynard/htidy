@@ -1,0 +1,48 @@
+name: htidy
+version: '0.1.0.0'
+synopsis: Stream filter to reformat html
+description: Please see README.md
+category: Web
+author: David Baynard
+maintainer: davidbaynard@gmail.com
+copyright: 2016 David Baynard
+license: Apache
+github: dbaynard/htidy
+library:
+  source-dirs: src
+  ghc-options: -Wall
+  exposed-modules:
+  - HTidy
+  dependencies:
+  - base >=4.7 && <5
+  - basic-prelude
+  - conduit
+  - conduit-extra
+  - html-conduit
+  - xml-conduit
+executables:
+  htidy:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+    - -Wall
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - base
+    - htidy
+tests:
+  htidy-test:
+    main: Spec.hs
+    source-dirs: test
+    ghc-options:
+    - -Wall
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - base
+    - hspec
+    - htidy
+    - QuickCheck
